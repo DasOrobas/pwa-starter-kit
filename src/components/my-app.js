@@ -42,7 +42,7 @@ class MyApp extends connect(store)(LitElement) {
     <style>
       :host {
         --app-drawer-width: 256px;
-        display: block;
+        --display: block;
 
         --app-primary-color: #E91E63;
         --app-secondary-color: #293237;
@@ -67,7 +67,7 @@ class MyApp extends connect(store)(LitElement) {
         width: 100%;
         text-align: center;
         background-color: var(--app-header-background-color);
-        color: var(--app-header-text-color);
+        color: var(--app-header-text-color); 
         border-bottom: 1px solid #eee;
       }
 
@@ -77,7 +77,7 @@ class MyApp extends connect(store)(LitElement) {
 
       [main-title] {
         font-family: 'Pacifico';
-        text-transform: lowercase;
+        /* text-transform: lowercase; */
         font-size: 30px;
         /* In the narrow layout, the toolbar is offset by the width of the
         drawer button, and the text looks not centered. Add a padding to
@@ -170,6 +170,7 @@ class MyApp extends connect(store)(LitElement) {
 
         .main-content {
           padding-top: 107px;
+          text-align:center;
         }
 
         /* The drawer button isn't shown in the wide layout, so we don't
@@ -189,9 +190,9 @@ class MyApp extends connect(store)(LitElement) {
 
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
-        <a selected?="${_page === 'view1'}" href="/view1">View One</a>
-        <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
-        <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'view1'}" href="/view1">Me</a>
+        <a selected?="${_page === 'view2'}" href="/view2">Experiments</a>
+       
       </nav>
     </app-header>
 
@@ -199,9 +200,8 @@ class MyApp extends connect(store)(LitElement) {
     <app-drawer opened="${_drawerOpened}"
         on-opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
-        <a selected?="${_page === 'view1'}" href="/view1">View One</a>
-        <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
-        <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'view1'}" href="/view1">Me</a>
+        <a selected?="${_page === 'view2'}" href="/view2">Experiments</a>
       </nav>
     </app-drawer>
 
@@ -209,12 +209,11 @@ class MyApp extends connect(store)(LitElement) {
     <main role="main" class="main-content">
       <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
       <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
-      <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
       <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
     </main>
 
     <footer>
-      <p>Made with &hearts; by the Polymer team.</p>
+       <p>Based on PWA starter kit</p>
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
